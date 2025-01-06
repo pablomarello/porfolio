@@ -1,0 +1,84 @@
+---
+import Django from "./icons/Django.astro"
+import Tailwind from "./icons/Tailwind.astro"
+import Python from "./icons/Python.astro"
+import Html from "./icons/Html.astro"
+import React from "./icons/React.astro"
+import Javascript from "./icons/Javascript.astro"
+
+const TAGS = {
+  DJANGO: {
+    name: "Django",
+    icon: Django,
+  },
+
+  PYTHON: {
+    name: "Python",
+    icon: Python,
+  },
+
+  TAILWIND: {
+    name: 'Tailwind',
+    icon: Tailwind,
+  },
+
+  HTML: {
+    name: "HTML",
+    icon: Html,
+  },
+
+  REACT: {
+    name: "React",
+    icon: React,
+  },
+
+  JAVASCRIPT: {
+    name: "Javascript",
+    icon: Javascript,
+  }
+}
+
+const PROJECTS = [
+  {
+    title: 'Mapa de Exportaciones',
+    description: 'Software realizado en pasantia llevada a cabo en la Secretaría de Relaciones Internacionales perteneciente al Ministerio de Integración Regional, Logística y Transporte del Gobierno de Catamarca. En dicha plataforma se pueden visualizar las exportaciones de la provincia de Catamarca de manera interactiva en conjunto con una trivia educativa de preguntas sobre las tareas que lleva adelante la secretaría.',
+    link: '#',
+    github: 'https://github.com/pablomarello/mapa-exportaciones-frontend',
+    image: '/projects/mapa-exportaciones.jpg',
+    tags: [TAGS.DJANGO, TAGS.PYTHON, TAGS.TAILWIND, TAGS.HTML]
+  },
+
+  {
+    title: 'Descuentos Catamarca',
+    description: 'Plataforma web centralizada donde los consumidores pueden acceder a información actualizada sobre descuentos y promociones, permitiendo a los usuarios encontrar y comparar ofertas de manera rápida y sencilla, optimizando sus compras. A su vez promociona comercios locales permitiendo a los pequeños y medianos comerciantes publicar sus productos y servicios con descuentos y promociones mejorando su visibilidad en el mercado.',
+    link: '#',
+    github: 'https://github.com/pablomarello/proyecto_descuentos2',
+    image: '/projects/descuentos-catamarca.jpg',
+    tags: [TAGS.DJANGO, TAGS.PYTHON, TAGS.REACT, TAGS.JAVASCRIPT, TAGS.TAILWIND, TAGS.HTML]
+  }
+
+ 
+]
+---
+
+
+{
+  PROJECTS.map(({ title, description, tags, image }) =>(
+    <article class="mb-14">
+      <h3 class="text-lg lg:text-xl font-semibold text-yellow-200/90 mb-2">{title}</h3>
+      <p class="text-sm lg:text-base mb-4 text-pretty">{description}</p>
+      <ul class="flex flex-wrap gap-x-4 gap-y-2 flex-row mb-6">
+        {tags.map((tag) =>(
+          <li >
+            <span class="flex bg-white rounded-full text-xs text-black py-1 px-2">
+              <tag.icon class="size-4"></tag.icon>{tag.name}
+            </span>
+          </li>
+         
+        ))}
+      </ul>
+      <img class="rounded shadow-xl shadow-white/5" src={image} alt={`Imagen del proyecto ${title}`}>
+    </article>
+  ))
+}
+

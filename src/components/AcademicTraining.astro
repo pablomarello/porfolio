@@ -1,0 +1,38 @@
+---
+import AcademicTrainingItem from "./AcademicTrainingItem.astro"
+
+const ACADEMICTRAINING = [
+  {
+    date: 'Instituto Superior General San Martín (Febrero 2022 - Diciembre 2024)',
+    title: 'Tecnicatura Superior en Desarrollo de Software',
+    
+  },
+  {
+    date: 'Nodo Tecnológico - Universidad Nacional de Catamarca (Abril 2024 - Abril 2025. EN CURSO)',
+    title: 'Diplomatura Universitaria en Desarrollo Web Full Stack con Javascript',
+
+  },
+  {
+    date: 'Codo a Codo 4.0 (Marzo 2024 - Julio 2024)',
+    title: 'Curso Full Stack NodeJs',
+
+  },
+  {
+    date: 'T.Tec Catamarca (Septiembre 2022 - Marzo 2023)',
+    title: 'Curso de QA - Tester',
+
+  }
+]
+---
+
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-2">
+  {
+    ACADEMICTRAINING.map(academictraining => 
+      <li class="mb-10 ms-4">
+        <AcademicTrainingItem {... academictraining} />
+      </li>
+    )
+  }                
+</ol>
+
