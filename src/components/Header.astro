@@ -2,7 +2,7 @@
 import fotopablo from '../assets/fotopablo.png';
 ---
 
-<header class="fixed top-0 left-0 z-50 flex justify-end md:justify-center lg:justify-center items-center py-5 pl-4 w-full xl:w-[1120px] mx-auto">
+<header class="fixed md:relative top-0 left-0 z-50 flex justify-end md:justify-center lg:justify-center items-center py-5 pl-4 w-full xl:w-[1120px] mx-auto">
 
 
   <nav class="hidden md:flex lg:flex flex-row gap-x-10 opacity-85">
@@ -51,10 +51,10 @@ import fotopablo from '../assets/fotopablo.png';
       </svg>
     </button>
 
-    <a href="#top" class="hover:underline hover:decoration-violet-700">Inicio</a>
-    <a href="#proyectos" class="hover:underline hover:decoration-violet-700">Proyectos</a>
-    <a href="#formacion-academica" class="hover:underline hover:decoration-violet-700">Sobre mí</a>
-    <a href="#" class="hover:underline hover:decoration-violet-700">Contacto</a>
+    <a id="menu-link" href="#top" class="hover:underline hover:decoration-violet-700">Inicio</a>
+    <a id="menu-link" href="#proyectos" class="hover:underline hover:decoration-violet-700">Proyectos</a>
+    <a id="menu-link" href="#formacion-academica" class="hover:underline hover:decoration-violet-700">Sobre mí</a>
+    <a id="menu-link" href="#" class="hover:underline hover:decoration-violet-700">Contacto</a>
   </div>
 </header>
 
@@ -63,6 +63,7 @@ import fotopablo from '../assets/fotopablo.png';
   const button = document.querySelector('#hamburger-button');
   const closeButton = document.querySelector('#close-button');
   const menu = document.querySelector('#mobile-menu');
+  const links = document.querySelectorAll('#menu-link'); // Selecciona todos los enlaces del menú
 
   const closeMenu = () => {
     menu?.classList.add('hidden'); // Oculta el menú móvil
@@ -87,5 +88,16 @@ import fotopablo from '../assets/fotopablo.png';
 
   // Escucha el evento de cambio de tamaño
   window.addEventListener('resize', handleResize);
+
+  // Cierra el menú al hacer clic en cualquier enlace
+links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden'); // Oculta el menú
+      button?.classList.remove('hidden'); // Muestra el botón hamburguesa
+    });
+  });
 });
+
+
+
 </script>
