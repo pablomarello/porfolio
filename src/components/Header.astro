@@ -2,13 +2,90 @@
 import fotopablo from '../assets/fotopablo.png';
 ---
 
-<header class="flex justify-center items-center py-5 w-full xl:w-[1120px] mx-auto">
+<header class="fixed top-0 left-0 z-50 flex justify-end md:justify-center lg:justify-center items-center py-5 pl-4 w-full xl:w-[1120px] mx-auto">
 
 
-  <nav class="flex flex-row gap-x-10 opacity-85">
-    <a href="#top">Inicio</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#formacion-academica">Sobre mí</a>
-    <a href="#">Contacto</a>
+  <nav class="hidden md:flex lg:flex flex-row gap-x-10 opacity-85">
+    <a href="#top" class="hover:underline hover:decoration-violet-700">Inicio</a>
+    <a href="#proyectos" class="hover:underline hover:decoration-violet-700">Proyectos</a>
+    <a href="#formacion-academica" class="hover:underline hover:decoration-violet-700">Sobre mí</a>
+    <a href="#" class="hover:underline hover:decoration-violet-700">Contacto</a>
   </nav>
+
+  <!-- Botón del menú hamburguesa -->
+  <button 
+    class="block md:hidden p-2 focus:outline-none border-2 rounded-lg mr-4" 
+    id="hamburger-button"
+    aria-label="Abrir menú">
+    <svg 
+      class="h-6 w-6 text-white" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2" 
+      viewBox="0 0 24 24" 
+      xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+    </svg>
+  </button>
+
+  <!-- Menú móvil -->
+  <div 
+    id="mobile-menu" 
+    class="hidden absolute top-0 left-0 w-full rounded-b-3xl h-screen bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] text-white flex flex-col items-center gap-y-4 py-4">
+    <!--
+<div class="relative h-full w-full bg-slate-950"><div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div></div>
+    -->
+    <!-- Botón de cerrar -->
+    <button 
+      id="close-button" 
+      class="absolute top-4 right-4 p-2 focus:outline-none border-2 rounded-full bg-neutral-800 text-white hover:bg-neutral-700"
+      aria-label="Cerrar menú">
+      <svg 
+        class="h-6 w-6" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        viewBox="0 0 24 24" 
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <a href="#top" class="hover:underline hover:decoration-violet-700">Inicio</a>
+    <a href="#proyectos" class="hover:underline hover:decoration-violet-700">Proyectos</a>
+    <a href="#formacion-academica" class="hover:underline hover:decoration-violet-700">Sobre mí</a>
+    <a href="#" class="hover:underline hover:decoration-violet-700">Contacto</a>
+  </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('#hamburger-button');
+  const closeButton = document.querySelector('#close-button');
+  const menu = document.querySelector('#mobile-menu');
+
+  const closeMenu = () => {
+    menu?.classList.add('hidden'); // Oculta el menú móvil
+    button?.classList.remove('hidden'); // Muestra el botón hamburguesa
+  };
+
+  const handleResize = () => {
+    // Si el ancho de la pantalla es mayor o igual al breakpoint de `md`
+    if (window.innerWidth >= 768) {
+      closeMenu(); // Asegúrate de que el menú móvil esté cerrado
+    }
+  };
+
+  button?.addEventListener('click', () => {
+    menu?.classList.remove('hidden'); // Muestra el menú
+    button?.classList.add('hidden'); // Oculta el botón hamburguesa
+  });
+
+  closeButton?.addEventListener('click', () => {
+    closeMenu();
+  });
+
+  // Escucha el evento de cambio de tamaño
+  window.addEventListener('resize', handleResize);
+});
+</script>
